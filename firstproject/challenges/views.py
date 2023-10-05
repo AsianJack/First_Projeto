@@ -7,6 +7,14 @@ meses = {
 }
 
 # Create your views here.
+def index(request):
+    lista_item = ""
+    month_key = meses.keys()
+    for month in month_key:
+        lista_item+=f"<li><a href='{month}'>{month.capitalize()}</a></li>"
+    respostas = f"<ul>{lista_item}</ul>"
+    return HttpResponse(respostas)
+
 def january(request):
     return HttpResponse("that's work")
 
