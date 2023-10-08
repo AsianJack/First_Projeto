@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
-
+from django.template.loader import render_to_string
 meses = {
     "january": "janero",
     "february": "feverero"
@@ -13,6 +13,7 @@ def index(request):
     for month in month_key:
         lista_item+=f"<li><a href='{month}'>{month.capitalize()}</a></li>"
     respostas = f"<ul>{lista_item}</ul>"
+    
     return HttpResponse(respostas)
 
 def january(request):
@@ -32,6 +33,11 @@ def month_number(request, month):
 def month(request, month):
     try:
         text = f"<h1>{meses[month]}</h1>"
-        return HttpResponse(text)
+        return render(request,"challenges/challenge.html", {
+            "text": meses[month],
+            "month": month.capitalize()
+        })
+        # resposta = render_to_string("challenges/challenge.html")
+        # return HttpResponse(resposta)
     except:
         return HttpResponseNotFound("Nao tem esse mes muleque")
