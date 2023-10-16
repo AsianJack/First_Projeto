@@ -1,20 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.template.loader import render_to_string
+
 meses = {
     "january": "janero",
-    "february": "feverero"
+    "february": None
 }
 
 # Create your views here.
 def index(request):
     lista_item = ""
-    month_key = meses.keys()
-    for month in month_key:
-        lista_item+=f"<li><a href='{month}'>{month.capitalize()}</a></li>"
-    respostas = f"<ul>{lista_item}</ul>"
-    
-    return HttpResponse(respostas)
+    month_key = list(meses.keys())
+    return render(request, "challenges/index.html", {
+        "months_key": month_key,
+    })
 
 def january(request):
     return HttpResponse("that's work")
