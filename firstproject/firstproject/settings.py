@@ -55,7 +55,9 @@ ROOT_URLCONF = 'firstproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / "templates" #faz a conexao do extends la do index com o base.html
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

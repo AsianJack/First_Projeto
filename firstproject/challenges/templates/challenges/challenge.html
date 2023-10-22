@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenge</title>
-</head>
-<body>
-    <h1>{{ month }}</h1>
-    {% if text is not none %}
-        <h2>{{ text }}</h2>
-    {% else %}
-        <p>There is no challenge for this month yet!</p>
-    {% endif %}
+{% extends "base.html" %}
+{% load static %}
+
+    {% block page_title %}
+        Challenge
+    {% endblock page_title %}
     
-</body>
-</html>
+    {% block content %}
+    {% include "challenges/includes/header.html" with la_no_include="teste_la_no_include" %} 
+    {% comment %} this with make a variable to use in the include {% endcomment %}
+        <h1>{{ month|title }}</h1>
+        {% if text is not none %}
+            <h2>{{ text|title }}</h2>
+        {% else %}
+            <p>There is no challenge for this month yet!</p>
+        {% endif %}
+    {% endblock content %}
+    

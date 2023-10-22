@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views #. only mean that from the same folder take views
 urlpatterns = [
-    path("", views.index),
+    path("", views.index, name="index"),
     # path("january", views.january),
     # path("february", views.february), this is default
     path("<int:month>", views.month_number),

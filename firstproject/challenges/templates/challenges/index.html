@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Challenges</title>
-</head>
-<body>
-    <ul>
-        {% for chave in months_key %}
-            <li><a href="{% url "month_challenger" chave %}">{{chave|title}}</a></li>
-            {% comment %} teoricamente ele pega o name que ta la na urls e o chave seria o valor do path a primeira parte {% endcomment %}
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "base.html" %}
+
+    {% block page_title %}
+        All Challenges
+    {% endblock  %}
+    
+    {% block content %}
+    {% include "challenges/includes/header.html" with la_no_include="teste_no_index" %}
+        <ul>
+            {% for chave in months_key %}
+                <li><a href="{% url "month_challenger" chave %}">{{chave|title}}</a></li>
+                {% comment %} teoricamente ele pega o name que ta la na urls e o chave seria o valor do path a primeira parte {% endcomment %}
+            {% endfor %}
+        </ul>
+    {% endblock  %}
+
+    

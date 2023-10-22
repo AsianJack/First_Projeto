@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.template.loader import render_to_string
 
 meses = {
@@ -39,4 +39,4 @@ def month(request, month):
         # resposta = render_to_string("challenges/challenge.html")
         # return HttpResponse(resposta)
     except:
-        return HttpResponseNotFound("Nao tem esse mes muleque")
+        raise Http404()
