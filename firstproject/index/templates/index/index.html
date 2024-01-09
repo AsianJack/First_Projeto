@@ -2,15 +2,17 @@
 {% load static %}
 
     {% block css_files %}
-        <link rel="stylesheet" href="{% static "challenges/challenges.css" %}">
-        <link rel="stylesheet" href="{% static "challenges/includes/header.css" %}">
+    <link rel="stylesheet" href="{% static "index/index.css" %}">
+    <link rel="stylesheet" href="{% static "index/includes/header.css" %}">
     {% endblock %}
+    
     {% block page_title %}
         All Challenges
     {% endblock  %}
     
     {% block content %}
-    {% include "challenges/includes/header.html" with la_no_include="teste_no_index" %}
+        {% include "index/includes/header.html" %}
+    
         <ul>
             {% for chave in months_key %}
                 <li><a href="{% url "month_challenger" chave %}">{{chave|title}}</a></li>
@@ -18,5 +20,3 @@
             {% endfor %}
         </ul>
     {% endblock  %}
-
-    

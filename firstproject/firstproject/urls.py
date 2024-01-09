@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('challenges/', include("challenges.urls"))#app name and the file i want
+    path('challenges/', include("challenges.urls")),#app name and the file i want
+    path('index/', include("index.urls"))
 ]
